@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones Cryptic Hunt - Step 2</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: url('https://wallpapercave.com/wp/wp4068742.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5dc;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 2s;
+        }
+        .container {
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 700px;
+            box-shadow: 0 0 20px gold;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 10px gold; }
+            to { box-shadow: 0 0 30px red; }
+        }
+        h1 {
+            font-size: 3rem;
+            color: gold;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+        }
+        p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 2px solid gold;
+            text-align: center;
+            background: #222;
+            color: gold;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: black;
+            background-color: gold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #d4af37;
+        }
+        .message {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Step 2: The Cipher of Kings</h1>
+        <p>A message was left by the last true ruler. Can you decipher it?</p>
+        <p><strong>Ciphered Text:</strong> "Xlmw mw xli tyfpmrk sj xli hevc orsww."</p>
+        <p><em>(A shift of -4 will reveal the truth.)</em></p>
+        <input type="text" id="answer" placeholder="Enter the decoded message here">
+        <br><br>
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="message" class="message"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            const correctAnswer = "this is the ruling of the dark king";
+            const message = document.getElementById("message");
+
+            if (userAnswer === correctAnswer) {
+                message.style.color = "green";
+                message.textContent = "Well done! You may proceed to the next step.";
+                setTimeout(() => {
+                    window.location.href = "step3.html"; // Redirect to next step
+                }, 2000);
+            } else {
+                message.textContent = "Incorrect! Try again.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones Puzzle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+        body {
+            background: url('uwp4486157.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'MedievalSharp', cursive;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.8);
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        input {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid gold;
+            border-radius: 5px;
+            background: black;
+            color: white;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+            background: gold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            position: absolute;
+        }
+        button:hover {
+            background: darkgoldenrod;
+            transform: scale(1.1);
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .cartoon {
+            width: 150px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #clue {
+            display: none;
+            font-size: 18px;
+            color: yellow;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game of Thrones Puzzle</h1>
+        <p>Solve this puzzle: "I am a three-digit number. My tens digit is five more than my ones digit, and my hundreds digit is eight less than my tens digit. What number am I?"</p>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <button id="submit1" onclick="checkAnswer()">Submit</button>
+        <button id="submit2" onclick="proceedToNextPuzzle()" disabled>Proceed to Next Puzzle</button>
+        <p id="popup" style="display: none; color: yellow; position: absolute;">Catch me if you can</p>
+        <p id="result"></p>
+        <p style="font-size: 18px; color: yellow;">Clue</p>
+        <img src="DALL·E 2025-02-09 10.39.12 - A medieval cartoon character resembling a wise old wizard with a long beard, wearing a cloak and holding a glowing scroll. The character looks friendl.webp" alt="Cartoon Character" class="cartoon" onclick="showClue()">
+        <p id="clue">Clue: Mujhe kya pata. Mai toh machine huuu !!! Ask your Coordinator.</p>
+    </div>
+
+    <script>
+        let moveCount = 0;
+        let correctAnswer = "194";
+        let isAnswerCorrect = false;
+
+        function checkAnswer() {
+            let answer = document.getElementById("answer").value.trim();
+            let result = document.getElementById("result");
+            let popup = document.getElementById("popup");
+            if (answer === correctAnswer) {
+                result.innerHTML = "✅ Correct! You may proceed to the next challenge.";
+                result.style.color = "lightgreen";
+                isAnswerCorrect = true;
+                document.getElementById("submit2").disabled = false;
+            } else {
+                result.innerHTML = "❌ Wrong! Try again.";
+                result.style.color = "red";
+                popup.style.display = "block";
+                let button = document.getElementById("submit1");
+                popup.style.left = button.offsetLeft + "px";
+                popup.style.top = button.offsetTop + button.offsetHeight + "px";
+            }
+        }
+
+        function moveButton() {
+            if (moveCount < 10) {
+                let button = document.getElementById("submit2");
+                let x = Math.floor(Math.random() * window.innerWidth * 0.6);
+                let y = Math.floor(Math.random() * window.innerHeight * 0.6);
+                button.style.left = x + "px";
+                button.style.top = y + "px";
+                moveCount++;
+            }
+        }
+
+        function proceedToNextPuzzle() {
+            if (isAnswerCorrect) {
+                window.location.href = "puzzle.html";
+            }
+        }
+
+        document.getElementById("submit2").addEventListener("mouseover", moveButton);
+
+        function showClue() {
+            document.getElementById("clue").style.display = "block";
+        }
+    </script>
+</body>
+</html>

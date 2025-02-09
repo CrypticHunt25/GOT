@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones Cryptic Hunt - Step 3</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: url('https://wallpapercave.com/wp/wp4058793.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5dc;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 2s;
+        }
+        .container {
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 700px;
+            box-shadow: 0 0 25px gold;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px gold; }
+            to { box-shadow: 0 0 40px red; }
+        }
+        h1 {
+            font-size: 3rem;
+            color: gold;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+        }
+        p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 2px solid gold;
+            text-align: center;
+            background: #222;
+            color: gold;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.3rem;
+            color: black;
+            background-color: gold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            box-shadow: 0 0 10px gold;
+        }
+        button:hover {
+            background-color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Step 3: The Battle of Logic</h1>
+        <p>Only the wisest minds survive in the Game of Thrones. Solve this challenge to advance.</p>
+        <p><strong>Riddle of the Seven Kingdoms:</strong></p>
+        <p>"Three noble houses prepare for war. House Stark has twice the soldiers of House Lannister, while House Baratheon has 50 fewer than House Stark. If all three houses together have 850 soldiers, how many does each house have?. Sequence: Stark,Lannister,Baratheon"</p>
+        <input type="text" id="answer" placeholder="Enter your answer here">
+        <br><br>
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="message" class="message"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            const correctAnswer = "360,180";
+            const message = document.getElementById("message");
+
+            if (userAnswer === correctAnswer) {
+                message.style.color = "green";
+                message.textContent = "Well done! You may proceed to the next step.";
+                setTimeout(() => {
+                    window.location.href = "step4.html"; // Redirect to next step
+                }, 2000);
+            } else {
+                message.textContent = "Incorrect! Try again.";
+            }
+        }
+    </script>
+</body>
+</html>

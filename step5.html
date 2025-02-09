@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Competition </title>
+    <script src="disable-inspect.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('Game of Thrones..wedp');
+            background-size:cover;
+            color: rgba(255, 255, 255, 0.536);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.551);
+            color: rgb(183, 150, 18);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            border: 2px solid rgb(183, 150, 18);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 16px;
+            width: 80%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        button {
+            background: #ff4b2b;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff1e00;
+            transform: scale(1.05);
+        }
+
+        #wrong-message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: red;
+            font-weight: bold;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #correct-message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: green;
+            font-weight: bold;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #next-btn {
+            background: #28a745;
+            display: none;
+            margin-top: 15px;
+        }
+
+        #next-btn:hover {
+            background: #218838;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>DECODE THE HIGH VALYRIN</h2>
+        <p>DECODE THE FOLLOWING TEXT AND WRITE THE ANSWER BELOW</p>
+         <img src="code to decode2.jpg" alt="image" height="250" width="350">
+         <img src="code to be decoded.jpg" alt="image" height="150" width="350">
+        <p></p>
+
+        <input type="text" id="answer1" placeholder="Type your answer here">
+        <br>
+        <button onclick="checkAnswer()">Submit</button>
+        
+        <p id="wrong-message">❌ Wrong answer!</p>
+        <p id="correct-message">✅ Your answer is correct!</p>
+        <button id="next-btn" onclick="goToNextPage()">NEXT</button>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            let answer = document.getElementById("answer1").value.trim().toLowerCase();
+            let wrongMessage = document.getElementById("wrong-message");
+            let correctMessage = document.getElementById("correct-message");
+            let nextBtn = document.getElementById("next-btn");
+
+            if (answer === "the winter is coming") {
+                correctMessage.style.display = "block";
+                correctMessage.style.opacity = "1"; 
+                nextBtn.style.display = "block"; 
+                wrongMessage.style.display = "none";
+            } else {
+                wrongMessage.style.display = "block"; 
+                wrongMessage.style.opacity = "1"; 
+                correctMessage.style.display = "none"; 
+                nextBtn.style.display = "none"; 
+            }
+        }
+
+        function goToNextPage() {
+            window.location.href = "step6.html"; // Change to the actual next question page
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones Cryptic Hunt - Victory</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: url('https://wallpapercave.com/wp/wp1811243.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5dc;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 2s;
+        }
+        .container {
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 700px;
+            box-shadow: 0 0 25px gold;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px gold; }
+            to { box-shadow: 0 0 40px red; }
+        }
+        h1 {
+            font-size: 3rem;
+            color: gold;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+            animation: flicker 1.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .throne {
+            width: 150px;
+            animation: rise 3s infinite alternate;
+        }
+        @keyframes rise {
+            from { transform: translateY(10px); }
+            to { transform: translateY(-10px); }
+        }
+        .crown {
+            font-size: 3rem;
+            animation: shine 1.5s infinite alternate;
+        }
+        @keyframes shine {
+            from { text-shadow: 0 0 10px gold; }
+            to { text-shadow: 0 0 20px red; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="crown">👑 You Have Claimed the Throne! 👑</h1>
+        <img class="throne" src="https://upload.wikimedia.org/wikipedia/en/3/39/Iron_Throne.jpg" alt="Iron Throne">
+        <p>🔥 The realm bows before you, mighty ruler! 🔥</p>
+        <p>⚔️ Your wisdom, strategy, and courage have led you to ultimate victory in the Game of Thrones Cryptic Hunt. ⚔️</p>
+        <p>🦁🐺🐉 Only the strongest prevail, and today, the Seven Kingdoms are yours! 🦁🐺🐉</p>
+    </div>
+</body>
+</html>

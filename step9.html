@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones Coding Puzzle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+        body {
+            background: url('Game of Thrones..Webp') no-repeat center center/cover;
+            font-family: 'MedievalSharp', cursive;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.8);
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        input {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid gold;
+            border-radius: 5px;
+            background: black;
+            color: white;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        button {
+            font-size: 18px;
+            padding: 15px;
+            background: gold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .cartoon {
+            width: 150px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #clue {
+            display: none;
+            font-size: 18px;
+            color: yellow;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game of Thrones Coding Puzzle</h1>
+        <p>Riddle: "I can store knowledge but have no brain. I can be opened, but I’m not a door. I’m made of symbols, but I am not a language. What am I?"</p>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <div class="btn-container">
+            <button onclick="checkButton(1)">Submit</button>
+            <button onclick="checkButton(2)">Submit</button>
+            <button onclick="checkButton(3)">Submit</button>
+        </div>
+        <p id="result"></p>
+        <img src="g1.webp" alt="Cartoon Character" class="cartoon" onclick="showClue()">
+        <p id="clue">Clue: Developers use me every day.</p>
+    </div>
+
+    <script>
+        let clickedButtons = {1: false, 2: false, 3: false};
+        
+        function checkButton(buttonNum) {
+            clickedButtons[buttonNum] = true;
+            if (Object.values(clickedButtons).every(val => val)) {
+                checkAnswer();
+            }
+        }
+        
+        function checkAnswer() {
+            let answer = document.getElementById("answer").value.trim().toLowerCase();
+            let result = document.getElementById("result");
+            if (answer === "file" || answer === "database" || answer === "code") {
+                result.innerHTML = "✅ Correct! Redirecting to the next challenge...";
+                result.style.color = "lightgreen";
+                setTimeout(() => {
+                    window.location.href = "congrats.html";
+                }, 2000);
+            } else {
+                result.innerHTML = "❌ Wrong! Try again.";
+                result.style.color = "red";
+            }
+        }
+
+        function showClue() {
+            document.getElementById("clue").style.display = "block";
+        }
+    </script>
+</body>
+</html>
